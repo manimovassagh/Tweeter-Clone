@@ -5,6 +5,19 @@ spring:
         jwt:
           issuer-uri: http://localhost:9090/realms/tweet
           jwk-set-uri: ${spring.security.oauth2.resourceserver.jwt.issuer-uri}/protocol/openid-connect/certs
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/tweet?useSSL=false&serverTimezone=UTC
+    username: root
+    password: mmmmmm
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    show-sql: true
+
+
 server:
   port: 8085
 
@@ -13,3 +26,4 @@ jwt:
     converter:
       resource-id: tweet-rest-api
       principle-attribute: preferred_username
+
