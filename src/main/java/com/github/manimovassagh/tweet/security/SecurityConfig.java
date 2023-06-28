@@ -1,4 +1,4 @@
-package com.alibou.keycloak.security;
+package com.github.manimovassagh.tweet.security;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;

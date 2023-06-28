@@ -1,6 +1,4 @@
-package com.alibou.keycloak.entities;
-
-
+package com.github.manimovassagh.tweet.entities;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -10,20 +8,20 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "retweets")
-public class Retweet {
+@Table(name = "follows")
+public class Follow {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long retweetId;
+    private Long followId;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
+    @JoinColumn(name = "follower_id")
+    private User follower;
 
     @ManyToOne
-    @JoinColumn(name = "tweet_id")
-    private Tweet tweet;
+    @JoinColumn(name = "following_id")
+    private User following;
 
 
 }

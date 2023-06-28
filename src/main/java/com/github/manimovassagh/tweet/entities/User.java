@@ -1,4 +1,4 @@
-package com.alibou.keycloak.entities;
+package com.github.manimovassagh.tweet.entities;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;

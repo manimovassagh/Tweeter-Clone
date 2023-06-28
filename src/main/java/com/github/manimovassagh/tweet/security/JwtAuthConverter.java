@@ -1,4 +1,4 @@
-package com.alibou.keycloak.security;
+package com.github.manimovassagh.tweet.security;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.convert.converter.Converter;

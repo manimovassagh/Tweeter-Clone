@@ -1,4 +1,4 @@
-package com.alibou.keycloak.security;
+package com.github.manimovassagh.tweet.security;
 
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;

@@ -1,30 +1,29 @@
-package com.alibou.keycloak.entities;
+package com.github.manimovassagh.tweet.entities;
+
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDateTime;
-
 @Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "tweets")
-public class Tweet {
+@Table(name = "retweets")
+public class Retweet {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long tweetId;
+    private Long retweetId;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
 
-    private String content;
-    private LocalDateTime timestamp;
+    @ManyToOne
+    @JoinColumn(name = "tweet_id")
+    private Tweet tweet;
 
 
 }
-

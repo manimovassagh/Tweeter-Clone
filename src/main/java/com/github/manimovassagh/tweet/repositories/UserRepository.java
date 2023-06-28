@@ -1,7 +1,7 @@
-package com.alibou.keycloak.repositories;
+package com.github.manimovassagh.tweet.repositories;
 
 
-import com.alibou.keycloak.entities.User;
+import com.github.manimovassagh.tweet.entities.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
