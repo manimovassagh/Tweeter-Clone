@@ -17,18 +17,22 @@ import org.springframework.web.bind.annotation.RequestBody;
 import java.security.Principal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 
 @Service
-
 public class TweetService {
 
-    @Autowired
-    TweetRepository tweetRepository;
-    @Autowired
-    UserRepository userRepository;
+    final TweetRepository tweetRepository;
+    final UserRepository userRepository;
+
+    public TweetService(TweetRepository tweetRepository, UserRepository userRepository) {
+        this.tweetRepository = tweetRepository;
+        this.userRepository = userRepository;
+    }
 
 
     public ResponseEntity<Tweet> createTweet(TweetDto tweetDto, Principal principal) {
@@ -98,6 +102,26 @@ public class TweetService {
 
 
         return tweetResponse;
+    }
+
+
+    public ResponseEntity<List<Tweet>>  getAllTweetsLazy(){
+
+      return  new ResponseEntity<>(tweetRepository.findAll(),HttpStatus.OK) ;
+    }
+
+
+    public Map<String, List<Tweet>> getTweetsGroupedByUsername() {
+        List<Tweet> allTweets = tweetRepository.findAll();
+
+        // Group tweets by username
+        Map<String, List<Tweet>> tweetsByUsername = new HashMap<>();
+        for (Tweet tweet : allTweets) {
+            String username = tweet.getUser().getUsername();
+            tweetsByUsername.computeIfAbsent(username, k -> new ArrayList<>()).add(tweet);
+        }
+
+        return tweetsByUsername;
     }
 
 

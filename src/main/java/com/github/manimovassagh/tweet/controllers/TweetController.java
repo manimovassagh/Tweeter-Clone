@@ -12,7 +12,10 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/v1")
@@ -57,5 +60,17 @@ public class TweetController {
         return tweetService.getAllTweetsForUser(principal);
     }
 
+    @GetMapping("/tweet/userLazy")
+    @PreAuthorize("hasRole('client_user')")
+    public ResponseEntity<List<Tweet>> getAllTweetsLazy() {
+        return tweetService.getAllTweetsLazy();
+    }
+
+
+    @GetMapping("/tweet/group")
+    @PreAuthorize("hasRole('client_user')")
+    public Map<String, List<Tweet>> getTweetsGroupedByUsername() {
+        return tweetService.getTweetsGroupedByUsername();
+    }
 
 }

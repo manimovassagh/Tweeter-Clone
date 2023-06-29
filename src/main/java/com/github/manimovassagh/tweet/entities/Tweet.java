@@ -1,5 +1,6 @@
 package com.github.manimovassagh.tweet.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -25,6 +26,11 @@ public class Tweet {
     private String content;
     private LocalDateTime timestamp;
 
+
+
+    private String getUsername(){
+        return this.user.getUsername();
+    }
 
 }
 
